@@ -72,7 +72,13 @@ public class UnitController : MonoBehaviour
 
     void Attack()
     {
-        // Placeholder for dealing damage
-        Debug.Log(transform.name + " attacks " + currentTarget.name + " for " + damage + " damage!");
+        // Check if the target still exists and has the TowerHealth component
+        TowerHealth tower = currentTarget.GetComponent<TowerHealth>();
+
+        if (tower != null)
+        {
+            // DEAL DAMAGE to the Tower
+            tower.TakeDamage(damage);
+        }
+        // Future logic: else if (currentTarget has a UnitController script) -> Unit-to-Unit combat
     }
-}
